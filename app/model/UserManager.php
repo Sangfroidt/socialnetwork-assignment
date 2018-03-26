@@ -40,10 +40,10 @@ class UserManager implements Nette\Security\IAuthenticator
 	 */
 	public function authenticate(array $credentials): Nette\Security\IIdentity
 	{
-		[$email, $password] = $credentials;
+		[$firstname, $password] = $credentials;
 
-		$row = $this->database->table(self::TABLE_EMAIL)
-			->where(self::COLUMN_EMAIL, $email)
+		$row = $this->database->table('users')
+			->where(self::COLUMN_FIRSTNAME, $firstname)
 			->fetch();
 
 		if (!$row) {
@@ -68,16 +68,24 @@ class UserManager implements Nette\Security\IAuthenticator
 	 * Adds new user.
 	 * @throws DuplicateNameException
 	 */
-	public function add(string $email, string $password): void
+	public function add(string $firstname, string $email, string $password): void
 	{
-		try {
-			$this->database->table(self::TABLE_EMAIL)->insert([
-				self::COLUMN_PASSWORD_HASH => Passwords::hash($password),
-				self::COLUMN_EMAIL => $email,
-			]);
-		} catch (Nette\Database\UniqueConstraintViolationException $e) {
-			throw new DuplicateNameException;
-		}
+		$duplicateemail = $this->database->table('users')->where('email', $email)
+						->fetch();
+						if ($duplicateemail) {
+							throw new DuplicateNameException;
+						}
+						else {
+								try {
+										$this->database->table('users')->insert([
+											self::COLUMN_FIRSTNAME => $firstname,
+											self::COLUMN_PASSWORD_HASH => Passwords::hash($password),
+											self::COLUMN_EMAIL => $email,
+										]);
+									} catch (Nette\Database\UniqueConstraintViolationException $e) {
+										throw new DuplicateNameException;
+									}
+						}
 	}
 }
 
