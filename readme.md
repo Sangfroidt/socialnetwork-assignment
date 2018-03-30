@@ -1,3 +1,7 @@
+
+Jan Bartoš
+
+
 Seznam úprav:
 úspěšná Registrace
 úspěšné Přihlášení
