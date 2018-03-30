@@ -1,25 +1,9 @@
-Úprava
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Seznam úprav:
+úspěšná Registrace
+úspěšné Přihlášení
+úspěšné přidávání příspěvků pod jménem uživatele
+upravená fotka na profilu
+neúspěšné nahrávání obrázků
 
 
 
@@ -59,7 +43,7 @@ V kořenu repozitáře vytvořte soubor README.md s popisem postupu nasazení va
     - Registrace
     - Přihlášení
     - Vyhledávání uživatelů
-    
+
 - Feed / Nejnovější příspěvky uživatelů (známe z facebooku)
     - Příspěvky
     - Hodnocení (like)

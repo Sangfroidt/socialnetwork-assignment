@@ -3,32 +3,36 @@
 {block content}
 <div class="row mb-2">
     <div class="col">
-        <form class="status-form">
+        <form class="status-form" n:name="commentForm">
             <div class="form-group">
-                <textarea class="form-control" rows="3" placeholder="Co se máte na srdci?"></textarea>
+                <textarea class="form-control" rows="3" placeholder="Co se máte na srdci?" n:name=topic_subject></textarea>
             </div>
             <div class="form-group text-right">
-                <a href="#" class="btn btn-primary">
+                <button href="#" class="btn btn-outline-primary" n:name=send>
                     <i class="fas fa-share-square"></i> Post
-                </a>
+                </button>
             </div>
         </form>
     </div>
 </div>
-{foreach [1,2,3,4,5,6] as $item}
+
+
+{foreach $topics as $topic}
 <div class="row mb-1">
     <div class="col">
         <div class="card wall-post">
             <div class="card-block">
                 <div class="profile-header">
-                    <div class="profile-img"></div>
+                      <a n:href="Profile:default">
+                    <div class="profile-img" style="background-image: url({$basePath}/img/{$profileimages})"></div>
                     <div class="profile-name">
-                        Karel Novák
+                        {$topic->topic_by}
+                      </a>
                     </div>
                 </div>
             </div>
             <div class="card-block py-1">
-                This is some text within a card block. {$item}
+              {$topic->topic_subject}
             </div>
             <div class="card-block">
                 <a href="#" class="btn btn-sm btn-success">

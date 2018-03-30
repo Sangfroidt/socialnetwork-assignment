@@ -1,0 +1,15 @@
+{block content}
+<div class="row mb-2 profile">
+    <div class="col">
+        <div class="card">
+          <a n:href="Profile:picture">
+            <div class="profile-header" style="background-image: url({$basePath}/img/profile-test-header.jpg)">
+                <div class="profile-picture" style="background-image: url({$basePath}/img/{$profileimages}.jpg)"></div>
+              </a>
+            </div>
+            <div class="card-block">
+                {control najakejForm}
+            </div>
+        </div>
+    </div>
+</div>
